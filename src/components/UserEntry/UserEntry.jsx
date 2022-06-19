@@ -1,9 +1,12 @@
-import {useDispatch} from 'react-redux'
-import {useState} from 'react'
+import {useDispatch} from 'react-redux';
+import {useState} from 'react';
+import { useHistory } from 'react-router-dom';
 
 function UserEntry () {
     const dispatch = useDispatch();
     const [name, setName] = useState('')
+    const history = useHistory();
+
     const handleSubmit = (evt) => {
         evt.preventDefault();
 
@@ -13,6 +16,8 @@ function UserEntry () {
         })
 
         setName('');
+
+        history.push('/feeling');
     }
     return (
     
@@ -27,7 +32,7 @@ function UserEntry () {
                 onChange={evt => setName(evt.target.value)}
                 />
             </label>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit"  />
         </form>
         </>
     )
