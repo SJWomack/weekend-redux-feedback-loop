@@ -20,6 +20,11 @@ function FeelingRating() {
 
         history.push('/understanding');
     }
+
+    function handleBack(){
+        history.push('/')
+    }
+    
     return (
         <>
             <h1>How are you feeling today?</h1>
@@ -37,6 +42,7 @@ function FeelingRating() {
                 </label>
                 <input type="submit" value="Submit" />
             </form>
+            <button onClick={handleBack}>Previous Page</button>
         </>
     )
 }

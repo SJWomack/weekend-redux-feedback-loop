@@ -2,14 +2,28 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 import CommentSection from '../CommentSection/CommentSection'
 import FeelingRating from '../FeelingRating/FeelingRating'
 import SupportRating from '../SupportRating/SupportRating'
 import UnderstandingRating from '../UnderstandingRating/UnderstandingRating'
 import UserEntry from '../UserEntry/UserEntry';
-function App() {
+import ReviewFeedback from '../ReviewFeedback/ReviewFeedback'
+import Success from '../Success/Success';
 
+function App() {
+const feedback = useSelector(store => store.userResponse);
+const dispatch = useDispatch();
+
+function handleSubmitFeedback (){
+  axios.post('/feedback', feedback)
+    .then(() => {
+      console.log('feedback sent');
+      
+    })
+    .catch ((err) => console.log('feedback not sent', err))
+}
   return (
     <Router>
 
@@ -34,6 +48,18 @@ function App() {
 
       <Route path='/support' exact>
         <SupportRating />
+      </Route>
+
+      <Route path="/comment" exact>
+        <CommentSection />
+      </Route>
+
+      <Route path="/review" exact>
+        <ReviewFeedback  submitFeedback={handleSubmitFeedback}/>
+      </Route>
+
+      <Route path="/success" exact>
+        <Success />
       </Route>
 
 

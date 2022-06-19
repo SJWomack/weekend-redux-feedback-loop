@@ -20,6 +20,10 @@ function SupportRating() {
 
         history.push('/comment');
     }
+
+    function handleBack(){
+        history.push('/understanding')
+    }
     return (
         <>
             <h1>How supported are you feeling?</h1>
@@ -37,6 +41,8 @@ function SupportRating() {
                 </label>
                 <input type="submit" value="Submit" />
             </form>
+            <button onClick={handleBack}>Previous Page</button>
+
         </>
     )
 }
