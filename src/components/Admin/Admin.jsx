@@ -28,6 +28,17 @@ function Admin() {
             })
     }
 
+    const handleFlag = (id, flagged) => {
+        axios.put(`/feedback/${id}`, {flagged: flagged})
+            .then(() => {
+                console.log('flag success');
+                fetchFeedback();
+            })
+            .catch((err) =>{
+                console.log('flag failed', err);
+            })
+    }
+
 
     return (
         <>

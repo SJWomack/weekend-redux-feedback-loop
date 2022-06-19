@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
     let queryText = `INSERT INTO "feedback" ("name", "feeling", "understanding", "support", "comments")
                      VALUES ($1, $2, $3, $4, $5);`
     pool.query(queryText, [feedback.name, feedback.feeling, feedback.understanding, feedback.support, feedback.comment])
-        .then(result => {
+        .then(() => {
             console.log('post success')
             res.sendStatus(201)
         })
@@ -52,6 +52,26 @@ router.delete('/:id', (req, res) => {
             res.sendStatus(500);
         });
 
+});
+
+
+router.put('/:id', (req, res) => {
+    const sqlQuery = `
+        UPDATE "feedback"
+        SET "flagged" = $2
+        WHERE id = $1;
+    `;
+    
+
+    pool.query(sqlQuery, [req.params.id, !req.body.flagged])
+        .then(() => {
+            console.log('flagged success')
+            res.sendStatus(200);
+        })
+        .catch((err) => {
+            console.log(`PUT failed, ${err}`);
+            res.sendStatus(500);
+        });
 });
 
 

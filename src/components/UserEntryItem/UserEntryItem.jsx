@@ -5,7 +5,7 @@ function UserEntryItem({ entry, handleDelete, handleFlag }) {
         handleDelete(entry.id);
     }
     const onFlag = () => {
-        handleFlag(entry.id);
+        handleFlag(entry.id, entry.flagged);
     }
     return (
         <tr>
