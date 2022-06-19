@@ -28,6 +28,14 @@ function App() {
         <FeelingRating />
       </Route>
 
+      <Route path='/understanding' exact>
+        <UnderstandingRating />
+      </Route>
+
+      <Route path='/support' exact>
+        <SupportRating />
+      </Route>
+
 
     </Router>
 
