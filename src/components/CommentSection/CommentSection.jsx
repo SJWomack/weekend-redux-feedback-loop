@@ -1,6 +1,46 @@
-<div className='App'>
-      <header className='App-header'>
-        <h1 className='App-title'>Feedback!</h1>
-        <h4>Don't forget it!</h4>
-      </header>
-    </div>
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom';
+
+function CommentSection() {
+
+    const [comment, setComment] = useState('');
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+
+        dispatch({
+            type: 'ADD_COMMENT',
+            payload: comment
+        })
+
+        setComment('');
+
+        history.push('/review');
+    }
+
+    function handleBack(){
+        history.push('/support')
+    }
+    return (
+        <>
+            <h1>How well are you understanding the content?</h1>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Let us know!
+                    <input type="text"
+                        placeholder="Thoughts?"
+                        value={comment}
+                        onChange={evt => setComment(evt.target.value)}
+                    />
+                </label>
+                <input type="submit" value="Submit" />
+            </form>
+            <button onClick={handleBack}>Previous Page</button>
+        </>
+    )
+}
+
+export default CommentSection;

@@ -26,8 +26,8 @@ const userResponse = (state = {} , action) => {
         case 'SET_USER_NAME':
             state.name = action.payload;
             return state;
-
-
+        case 'RESET_FEEDBACK':
+            return {};
     }
     return state;
 }

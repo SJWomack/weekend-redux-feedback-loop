@@ -20,6 +20,10 @@ function UnderstandingRating() {
 
         history.push('/support');
     }
+
+    function handleBack(){
+        history.push('/feeling')
+    }
     return (
         <>
             <h1>How well are you understanding the content?</h1>
@@ -37,6 +41,8 @@ function UnderstandingRating() {
                 </label>
                 <input type="submit" value="Submit" />
             </form>
+            <button onClick={handleBack}>Previous Page</button>
+
         </>
     )
 }
