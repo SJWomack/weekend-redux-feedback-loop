@@ -2,6 +2,20 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
+router.get('/', (req,res) => {
+    let queryText = 'SELECT * FROM "feedback" ORDER BY "name";';
+
+    pool.query(queryText)
+        .then((result) => {
+            console.log('get success', result);
+            res.send(result.rows);
+        })
+        .catch((err) => {
+            console.log('err in get', err);
+            res.sendStatus(500);
+        })
+})
+
 router.post('/', (req, res) => {
     let feedback = req.body;
     console.log('adding new feedback', feedback);
