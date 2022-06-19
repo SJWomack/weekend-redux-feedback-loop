@@ -24,6 +24,10 @@ function App() {
         <UserEntry />
       </Route>
 
+      <Route path='/feeling' exact>
+        <FeelingRating />
+      </Route>
+
 
     </Router>
 
