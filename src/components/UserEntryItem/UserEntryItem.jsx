@@ -1,8 +1,8 @@
 
 
-function UserEntryItem ({entry}) {
+function UserEntryItem({ entry }) {
 
-    return(
+    return (
         <tr>
             <td>{entry.name}</td>
             <td>{entry.feeling}</td>
@@ -11,8 +11,6 @@ function UserEntryItem ({entry}) {
             <td>{entry.comments}</td>
             <td><button>Flag</button></td>
             <td><button>Delete</button></td>
-
-            
         </tr>
     )
 }
