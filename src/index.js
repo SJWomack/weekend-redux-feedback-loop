@@ -9,54 +9,33 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
-const feelingRating = (state = 0 , action) => {
+const userResponse = (state = {} , action) => {
     switch (action.type){
         case 'ADD_FEELING_RATING':
-            return action.payload;
-    }
-    return state;
-}
-
-const understandingRating = (state = 0, action) => {
-    switch (action.type) {
+            state.feeling = action.payload;
+            return state;
         case 'ADD_UNDERSTANDING_RATING':
-            return action.payload;
-    }
-    return state;
-}
-
-const supportRating = (state = 0, action) => {
-    switch (action.type) {
+            state.understanding = action.payload;
+            return state;
         case 'ADD_SUPPORT_RATING':
-            return action.payload;
-    }
-    return state;
-}
-
-const commentSection = (state = '', action) => {
-    switch (action.type) {
+            state.support = action.payload;
+            return state;
         case 'ADD_COMMENT':
-            return action.payload;
+            state.comment = action.payload;
+            return state;
+        case 'SET_USER_NAME':
+            state.name = action.payload;
+            return state;
+
+
     }
     return state;
 }
 
-const userName = (state = '', action) => {
-    switch (action.type) {
-        case 'SET_USER_NAME':
-            return action.payload;
-    }
-    return state;
-}
 
 const storeInstance = createStore(
     combineReducers({
-       feelingRating,
-       understandingRating,
-       supportRating,
-        commentSection,
-        userName
-
+       userResponse
     }),
     applyMiddleware(logger)
 );
