@@ -2,28 +2,21 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import Grid from '@mui/material/Grid';
+
+
 
 import CommentSection from '../CommentSection/CommentSection'
 import FeelingRating from '../FeelingRating/FeelingRating'
 import SupportRating from '../SupportRating/SupportRating'
 import UnderstandingRating from '../UnderstandingRating/UnderstandingRating'
-import UserEntry from '../UserEntry/UserEntry';
+import UserName from '../UserName/UserName';
 import ReviewFeedback from '../ReviewFeedback/ReviewFeedback'
 import Success from '../Success/Success';
+import Admin from '../Admin/Admin';
 
 function App() {
-const feedback = useSelector(store => store.userResponse);
-const dispatch = useDispatch();
 
-function handleSubmitFeedback (){
-  axios.post('/feedback', feedback)
-    .then(() => {
-      console.log('feedback sent');
-      
-    })
-    .catch ((err) => console.log('feedback not sent', err))
-}
   return (
     <Router>
 
@@ -35,31 +28,35 @@ function handleSubmitFeedback (){
       </div>
 
       <Route path='/' exact>
-        <UserEntry />
+         <Grid container justifyContent="center"><UserName /></Grid> 
       </Route>
 
       <Route path='/feeling' exact>
-        <FeelingRating />
+        <Grid container justifyContent="center"><FeelingRating /></Grid>
       </Route>
 
       <Route path='/understanding' exact>
-        <UnderstandingRating />
+       <Grid container justifyContent="center"> <UnderstandingRating /></Grid>
       </Route>
 
       <Route path='/support' exact>
-        <SupportRating />
+       <Grid container justifyContent="center"><SupportRating /></Grid>
       </Route>
 
       <Route path="/comment" exact>
-        <CommentSection />
+        <Grid container justifyContent="center"><CommentSection /></Grid>
       </Route>
 
       <Route path="/review" exact>
-        <ReviewFeedback  submitFeedback={handleSubmitFeedback}/>
+       <ReviewFeedback  />
       </Route>
 
       <Route path="/success" exact>
-        <Success />
+         <Success />
+      </Route>
+
+      <Route path="/admin" exact>
+        <Grid container justifyContent="center"><Admin /></Grid>
       </Route>
 
 
