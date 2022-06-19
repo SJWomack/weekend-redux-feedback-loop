@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import axios from 'axios'
+import { ListItem } from '@mui/material';
 
 function ReviewFeedback() {
     const feedback = useSelector(store => store.userResponse);
@@ -25,7 +26,7 @@ function ReviewFeedback() {
         <>
             <h1>Review Your Feedback</h1>
             <ul>
-                <li>Name: {feedback.name}</li>
+                <ListItem>Name: {feedback.name}</ListItem>
                 <li>Feeling: {feedback.feeling}</li>
                 <li>Understanding: {feedback.understanding}</li>
                 <li>Support: {feedback.support}</li>

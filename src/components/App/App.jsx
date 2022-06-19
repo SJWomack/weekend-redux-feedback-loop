@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import Grid from '@mui/material/Grid';
+
 
 
 import CommentSection from '../CommentSection/CommentSection'
@@ -27,35 +28,35 @@ function App() {
       </div>
 
       <Route path='/' exact>
-        <UserName />
+         <Grid container justifyContent="center"><UserName /></Grid> 
       </Route>
 
       <Route path='/feeling' exact>
-        <FeelingRating />
+        <Grid container justifyContent="center"><FeelingRating /></Grid>
       </Route>
 
       <Route path='/understanding' exact>
-        <UnderstandingRating />
+       <Grid container justifyContent="center"> <UnderstandingRating /></Grid>
       </Route>
 
       <Route path='/support' exact>
-        <SupportRating />
+       <Grid container justifyContent="center"><SupportRating /></Grid>
       </Route>
 
       <Route path="/comment" exact>
-        <CommentSection />
+        <Grid container justifyContent="center"><CommentSection /></Grid>
       </Route>
 
       <Route path="/review" exact>
-        <ReviewFeedback  />
+       <ReviewFeedback  />
       </Route>
 
       <Route path="/success" exact>
-        <Success />
+         <Success />
       </Route>
 
       <Route path="/admin" exact>
-        <Admin />
+        <Grid container justifyContent="center"><Admin /></Grid>
       </Route>
 
 

@@ -1,8 +1,11 @@
-import {useDispatch} from 'react-redux';
-import {useState} from 'react';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
-function UserEntry () {
+function UserEntry() {
     const dispatch = useDispatch();
     const [name, setName] = useState('')
     const history = useHistory();
@@ -11,7 +14,7 @@ function UserEntry () {
         evt.preventDefault();
 
         dispatch({
-            type:'SET_USER_NAME',
+            type: 'SET_USER_NAME',
             payload: name
         })
 
@@ -20,20 +23,33 @@ function UserEntry () {
         history.push('/feeling');
     }
     return (
-    
+
         <>
-        <h2>Please Enter Your Name</h2>
-        <form onSubmit={handleSubmit}>
-            <label >
-                Name:
-                <input type="text"
-                required placeholder="required"
-                value={name}
-                onChange={evt => setName(evt.target.value)}
-                />
-            </label>
-            <input type="submit" value="Submit"  />
-        </form>
+            
+            <Box
+                onSubmit={handleSubmit}
+                component="form"
+                sx={{
+                    '& .MuiTextField-root': { m: 1, width: '25ch'}
+                }}
+                autoComplete="off"
+            >
+                <h2>Please Enter Your Name</h2>
+                <div>
+                    <TextField
+                        required
+                        id="outlined-required"
+                        label="Required"
+                        type="text"
+                        placeholder="required"
+                        defaultValue={name}
+                        onChange={evt => setName(evt.target.value)}
+                    />
+                    <Button variant="contained" type='submit'>Submit</Button>
+                </div>
+                
+            </Box>
+
         </>
     )
 }

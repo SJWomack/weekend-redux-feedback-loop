@@ -1,6 +1,12 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 function SupportRating() {
 
@@ -21,27 +27,54 @@ function SupportRating() {
         history.push('/comment');
     }
 
-    function handleBack(){
+    function handleBack() {
         history.push('/understanding')
     }
     return (
         <>
-            <h1>How supported are you feeling?</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Let us know!
-                    <input type="number"
-                        required
-                        placeholder="Required"
-                        value={supportLevel}
-                        onChange={evt => setSupportLevel(evt.target.value)}
-                        max={5}
-                        min={1}
-                    />
-                </label>
-                <input type="submit" value="Submit" />
-            </form>
-            <button onClick={handleBack}>Previous Page</button>
+
+
+
+            <Box
+                onSubmit={handleSubmit}
+                component="form"
+                sx={{
+                    display: 'flex', flexDirection: 'column', alignItems: 'center'
+                }}
+                autoComplete="off"
+            >
+                <h2>How Supported Do You Feel?</h2>
+
+                <div>
+                    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+                        <InputLabel id="demo-select-small">1-5</InputLabel>
+                        <Select
+                            required
+                            value={supportLevel}
+                            label="support"
+                            onChange={evt => setSupportLevel(evt.target.value)}
+                        >
+                            <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem>
+                            <MenuItem value={1}>1</MenuItem>
+                            <MenuItem value={2}>2</MenuItem>
+                            <MenuItem value={3}>3</MenuItem>
+                            <MenuItem value={4}>4</MenuItem>
+                            <MenuItem value={4}>4</MenuItem>
+
+                        </Select>
+                    </FormControl>
+
+                    <Button variant="contained" type='submit'>Submit</Button>
+                </div>
+
+                <Button variant="contained" onClick={handleBack}>Previous Page</Button>
+            </Box>
+
+
+
+
 
         </>
     )
