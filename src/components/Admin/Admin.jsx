@@ -4,7 +4,9 @@ import axios from 'axios'
 function Admin() {
     const [userEntries, setUserEntries] = useState([]);
     
-    useEffect(() => {
+    useEffect(() => fetchFeedback(), [])
+
+    const fetchFeedback = () =>{
         axios.get('/feedback')
             .then((results) => {
                 console.log('get user entries success')
@@ -13,7 +15,18 @@ function Admin() {
             .catch((err) => {
                 console.log('get user entries failed', err)
             })
-    }, [])
+   }
+
+    const handleDelete = (id) =>{
+        axios.delete(`/feedback/${id}`)
+            .then(() =>{
+                console.log('delete success')
+                fetchFeedback();
+            })
+            .catch((err) =>{
+                console.log('delete failed', err)
+            })
+    }
 
 
     return (
@@ -34,7 +47,7 @@ function Admin() {
                     </tr>
                 </thead>
                 <tbody>
-                    {userEntries.map(entry => <UserEntryItem entry={entry} key={entry.id} />)}
+                    {userEntries.map(entry => <UserEntryItem entry={entry} handleFlag={handleFlag} handleDelete={handleDelete} key={entry.id} />)}
                 </tbody>
             </table>
         </>
