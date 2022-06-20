@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
-
+//grabs all data in db table and sends to client
 router.get('/', (req,res) => {
     let queryText = 'SELECT * FROM "feedback" ORDER BY "name";';
 
@@ -15,7 +15,7 @@ router.get('/', (req,res) => {
             res.sendStatus(500);
         })
 })
-
+//adds new row to db
 router.post('/', (req, res) => {
     let feedback = req.body;
     console.log('adding new feedback', feedback);
@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
             res.sendStatus(500);
         })
 })
-
+//removes specified row from db
 router.delete('/:id', (req, res) => {
   
     console.log('in delete', req.params.id);
@@ -54,7 +54,7 @@ router.delete('/:id', (req, res) => {
 
 });
 
-
+//updates flagged status in db
 router.put('/:id', (req, res) => {
     const sqlQuery = `
         UPDATE "feedback"

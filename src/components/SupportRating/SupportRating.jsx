@@ -13,7 +13,7 @@ function SupportRating() {
     const [supportLevel, setSupportLevel] = useState('');
     const dispatch = useDispatch();
     const history = useHistory();
-
+    //gathers support rating and updates support value in global stat
     const handleSubmit = (evt) => {
         evt.preventDefault();
 
@@ -61,7 +61,7 @@ function SupportRating() {
                             <MenuItem value={2}>2</MenuItem>
                             <MenuItem value={3}>3</MenuItem>
                             <MenuItem value={4}>4</MenuItem>
-                            <MenuItem value={4}>4</MenuItem>
+                            <MenuItem value={5}>5</MenuItem>
 
                         </Select>
                     </FormControl>

@@ -9,8 +9,10 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
-const userResponse = (state = {} , action) => {
-    switch (action.type){
+
+//reducer that manages state for user response object
+const userResponse = (state = {}, action) => {
+    switch (action.type) {
         case 'ADD_FEELING_RATING':
             state.feeling = action.payload;
             return state;
@@ -32,10 +34,10 @@ const userResponse = (state = {} , action) => {
     return state;
 }
 
-
+//grabs all state managed by reducers and stores in a globally accessible object
 const storeInstance = createStore(
     combineReducers({
-       userResponse
+        userResponse
     }),
     applyMiddleware(logger)
 );

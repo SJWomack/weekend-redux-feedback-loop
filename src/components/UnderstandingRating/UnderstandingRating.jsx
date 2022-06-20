@@ -12,7 +12,7 @@ function UnderstandingRating() {
     const [understandingLevel, setUnderstandingLevel] = useState('');
     const dispatch = useDispatch();
     const history = useHistory();
-
+    //gathers understanding rating and updates global state in user feedback
     const handleSubmit = (evt) => {
         evt.preventDefault();
 
@@ -60,7 +60,7 @@ function UnderstandingRating() {
                             <MenuItem value={2}>2</MenuItem>
                             <MenuItem value={3}>3</MenuItem>
                             <MenuItem value={4}>4</MenuItem>
-                            <MenuItem value={4}>4</MenuItem>
+                            <MenuItem value={5}>5</MenuItem>
 
                         </Select>
                     </FormControl>

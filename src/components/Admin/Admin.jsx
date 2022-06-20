@@ -14,7 +14,7 @@ function Admin() {
     const [userEntries, setUserEntries] = useState([]);
 
     useEffect(() => fetchFeedback(), [])
-
+    //fetches all feedback data
     const fetchFeedback = () => {
         axios.get('/feedback')
             .then((results) => {
@@ -25,7 +25,7 @@ function Admin() {
                 console.log('get user entries failed', err)
             })
     }
-
+    //handles deletion of specific user feedback
     const handleDelete = (id) => {
         axios.delete(`/feedback/${id}`)
             .then(() => {
@@ -36,7 +36,7 @@ function Admin() {
                 console.log('delete failed', err)
             })
     }
-
+    //handles updating flagged status for specified user feedback
     const handleFlag = (id, flagged) => {
         axios.put(`/feedback/${id}`, { flagged: flagged })
             .then(() => {
@@ -55,21 +55,22 @@ function Admin() {
                 <h1>Feedback Results</h1>
             </div>
             <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650, backgroundColor: 'beige', fontWeight: 'bold'}} aria-label="simple table">
+                <Table sx={{ minWidth: 650, margin: '0 auto', maxWidth: '90%', backgroundColor: 'beige', fontWeight: 'bold' }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Name</TableCell>
-                            <TableCell align="right">Feeling</TableCell>
-                            <TableCell align="right">Understanding</TableCell>
-                            <TableCell align="right">Support</TableCell>
-                            <TableCell align="right">Comments</TableCell>
-                            <TableCell align="right">Flag</TableCell>
-                            <TableCell align="right">Delete</TableCell>
+                            <TableCell align="center">Name</TableCell>
+                            <TableCell align="center">Feeling</TableCell>
+                            <TableCell align="center">Understanding</TableCell>
+                            <TableCell align="center">Support</TableCell>
+                            <TableCell align="center">Comments</TableCell>
+                            <TableCell align="center">Flag</TableCell>
+                            <TableCell align="center">Delete</TableCell>
 
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        { userEntries.map(entry => <UserEntryItem entry={entry} handleFlag={handleFlag} handleDelete={handleDelete} key={entry.id} />) }
+                        {/* loops through user feedback data and renders each row as a table row on dom */}
+                        {userEntries.map(entry => <UserEntryItem entry={entry} handleFlag={handleFlag} handleDelete={handleDelete} key={entry.id} />)}
                     </TableBody>
                 </Table>
             </TableContainer>

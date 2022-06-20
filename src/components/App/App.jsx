@@ -18,6 +18,7 @@ import Admin from '../Admin/Admin';
 function App() {
 
   return (
+    //client side routing for all url endpoints
     <Router>
 
       <div className='App'>
@@ -28,7 +29,7 @@ function App() {
       </div>
 
       <Route path='/' exact>
-         <Grid container justifyContent="center"><UserName /></Grid> 
+        <Grid container justifyContent="center"><UserName /></Grid>
       </Route>
 
       <Route path='/feeling' exact>
@@ -36,23 +37,23 @@ function App() {
       </Route>
 
       <Route path='/understanding' exact>
-       <Grid container justifyContent="center"> <UnderstandingRating /></Grid>
+        <Grid container justifyContent="center"> <UnderstandingRating /></Grid>
       </Route>
 
       <Route path='/support' exact>
-       <Grid container justifyContent="center"><SupportRating /></Grid>
+        <Grid container justifyContent="center"><SupportRating /></Grid>
       </Route>
 
       <Route path="/comment" exact>
-        <Grid container justifyContent="center"><CommentSection /></Grid>
+        <CommentSection />
       </Route>
 
       <Route path="/review" exact>
-       <ReviewFeedback  />
+        <ReviewFeedback />
       </Route>
 
       <Route path="/success" exact>
-         <Success />
+        <Success />
       </Route>
 
       <Route path="/admin" exact>

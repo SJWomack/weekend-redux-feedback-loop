@@ -9,7 +9,7 @@ function UserEntry() {
     const dispatch = useDispatch();
     const [name, setName] = useState('')
     const history = useHistory();
-
+    //gathers user name input and updates corresponding value in global state user feedback
     const handleSubmit = (evt) => {
         evt.preventDefault();
 
@@ -25,12 +25,12 @@ function UserEntry() {
     return (
 
         <>
-            
+
             <Box
                 onSubmit={handleSubmit}
                 component="form"
                 sx={{
-                    '& .MuiTextField-root': { m: 1, width: '25ch'}
+                    '& .MuiTextField-root': { m: 1, width: '25ch' }
                 }}
                 autoComplete="off"
             >
@@ -47,7 +47,7 @@ function UserEntry() {
                     />
                     <Button variant="contained" type='submit'>Submit</Button>
                 </div>
-                
+
             </Box>
 
         </>

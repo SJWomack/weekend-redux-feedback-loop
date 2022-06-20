@@ -6,7 +6,8 @@ import { ListItem } from '@mui/material';
 function ReviewFeedback() {
     const feedback = useSelector(store => store.userResponse);
     const history = useHistory();
-
+    //grabs global state for user feedback and sends in post request to server
+    //then moves to confirmation screen
     function handleSubmitFeedback() {
         axios.post('/feedback', feedback)
             .then(() => {
@@ -16,7 +17,7 @@ function ReviewFeedback() {
             })
             .catch((err) => console.log('feedback not sent', err))
     }
-
+    //moves to previous screen
     function handleBack() {
         history.push('/comment')
     }

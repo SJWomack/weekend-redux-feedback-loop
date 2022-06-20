@@ -10,6 +10,7 @@ function CommentSection() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    //on submit updates comment data in global state and moves to next input screen
     const handleSubmit = (evt) => {
         evt.preventDefault();
 
@@ -22,8 +23,8 @@ function CommentSection() {
 
         history.push('/review');
     }
-
-    function handleBack(){
+    //moves to previous screen
+    function handleBack() {
         history.push('/support')
     }
     return (
