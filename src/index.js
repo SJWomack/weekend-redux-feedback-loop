@@ -14,20 +14,15 @@ import logger from 'redux-logger';
 const userResponse = (state = {}, action) => {
     switch (action.type) {
         case 'ADD_FEELING_RATING':
-            state.feeling = action.payload;
-            return state;
+            return {...state, feeling: action.payload};
         case 'ADD_UNDERSTANDING_RATING':
-            state.understanding = action.payload;
-            return state;
+            return {...state, understanding: action.payload};
         case 'ADD_SUPPORT_RATING':
-            state.support = action.payload;
-            return state;
+            return {...state, support :action.payload};
         case 'ADD_COMMENT':
-            state.comment = action.payload;
-            return state;
+            return {...state, comment: action.payload};
         case 'SET_USER_NAME':
-            state.name = action.payload;
-            return state;
+            return {...state, name: action.payload};
         case 'RESET_FEEDBACK':
             return {};
     }
